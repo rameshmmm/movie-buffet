@@ -1,0 +1,25 @@
+type User {
+  userId: ID!
+  username: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+input LoginInput {
+  userId: String!
+  password: String!
+}
+
+input RegisterInput {
+  userId: String!
+  username: String!
+  password: String!
+}
+
+type Mutation {
+  login(input: LoginInput!): AuthPayload!
+  register(input: RegisterInput!): User!
+}

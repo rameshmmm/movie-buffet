@@ -1,0 +1,40 @@
+type Movie {
+  movieId: ID!
+  movieName: String!
+  genre: String!
+  favorite: String!
+  rating: Float!
+  moviePoster: String
+  moviePlot: String!
+}
+
+input MovieInput {
+  movieId: ID!
+  movieName: String!
+  genre: String!
+  favorite: String!
+  rating: Float!
+  moviePoster: String
+  moviePlot: String!
+}
+
+input MovieUpdateInput {
+  movieName: String
+  genre: String
+  favorite: String
+  rating: Float
+  moviePoster: String
+  moviePlot: String
+}
+
+type Query {
+  movies: [Movie!]!
+  movie(movieId: ID!): Movie
+  moviesByGenre(genre: String!): [Movie!]!
+}
+
+type Mutation {
+  createMovie(input: MovieInput!): Movie!
+  updateMovie(movieId: ID!, input: MovieUpdateInput!): Movie!
+  deleteMovie(movieId: ID!): Boolean!
+}
