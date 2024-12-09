@@ -5,18 +5,10 @@ const { join } = require('path');
 const mongoose = require('mongoose');
 const resolvers = require('./graphql/resolvers');
 const { getUser } = require('./middleware/auth');
+const { movieTypeDefs } = require("./graphql/typeDefs/movie.graphql");
+const { userTypeDefs } = require("./graphql/typeDefs/user.graphql");
 
 require('dotenv').config();
-
-// Read GraphQL type definitions
-const movieTypeDefs = readFileSync(
-  join(__dirname, 'graphql/typeDefs/movie.graphql'),
-  'utf-8'
-);
-const userTypeDefs = readFileSync(
-  join(__dirname, 'graphql/typeDefs/user.graphql'),
-  'utf-8'
-);
 
 async function startServer() {
   const server = new ApolloServer({

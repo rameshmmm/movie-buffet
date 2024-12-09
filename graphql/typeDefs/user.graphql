@@ -1,25 +1,30 @@
-type User {
-  userId: ID!
-  username: String!
-}
+const gql = require('graphql-tag');
 
-type AuthPayload {
-  token: String!
-  user: User!
-}
+const userTypeDefs = gql`
+  type User {
+    userId: ID!
+    username: String!
+  }
 
-input LoginInput {
-  userId: String!
-  password: String!
-}
+  type AuthPayload {
+    token: String!
+    user: User!
+  }
 
-input RegisterInput {
-  userId: String!
-  username: String!
-  password: String!
-}
+  input LoginInput {
+    userId: String!
+    password: String!
+  }
 
-type Mutation {
-  login(input: LoginInput!): AuthPayload!
-  register(input: RegisterInput!): User!
-}
+  input RegisterInput {
+    userId: String!
+    username: String!
+    password: String!
+  }
+
+  type Mutation {
+    login(input: LoginInput!): AuthPayload!
+    register(input: RegisterInput!): User!
+  }
+`;
+module.exports = { userTypeDefs };
