@@ -17,7 +17,6 @@ const userTypeDefs = gql`
   }
 
   input RegisterInput {
-    userId: String!
     username: String!
     password: String!
   }
